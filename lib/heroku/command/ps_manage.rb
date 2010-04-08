@@ -4,7 +4,8 @@ module Heroku::Command
 			type = args.shift
 			qty = args.shift
 			if type and qty
-				heroku.psmanage(extract_app, type, qty)
+				new_qty = heroku.psmanage(extract_app, type, qty)
+				display "now running #{new_qty} of #{type}"
 			else
 				display "Usage: heroku ps:manage <type> <qty>"
 			end
