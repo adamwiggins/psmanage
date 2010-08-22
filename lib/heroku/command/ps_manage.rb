@@ -15,11 +15,11 @@ module Heroku::Command
       ps = heroku.ps(extract_app)
 
       output = []
-      output << "UPID      Process       State            Command"
-      output << "--------  ------------  ---------------  ------------------------------"
+      output << "UPID      Process       State               Command"
+      output << "--------  ------------  ------------------  ------------------------------"
 
       ps.each do |p|
-        output << "%-8s  %-12s  %-15s  %s" %
+        output << "%-8s  %-12s  %-18s  %s" %
           [ p['upid'], p['process'], "#{p['state']} for #{time_ago(p['elapsed']).gsub(/ ago/, '')}", truncate(p['command'], 36) ]
       end
 
